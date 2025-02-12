@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        function updateCountdown() {
+            const eventDate = new Date("2025-04-20T00:00:00").getTime(); // ইভেন্টের সঠিক তারিখ বসান
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            if (difference <= 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        // প্রতি সেকেন্ডে কাউন্টডাউন আপডেট হবে
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            answer.classList.toggle('hidden');
+            icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
+        }
+
+    </script>
+    <style>
+        .hero-bg {
+            background: url('preview.jpg') center/cover no-repeat;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .hero-date {
+            animation: fadeInUp 1.8s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-button {
+            animation: fadeInUp 2s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <!-- <header class="bg-green-600 text-white py-4 fixed top-0 w-full z-50 shadow-md">
+        <div class="flex items-center space-x-4">
+            <img src="download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
+            <h1 class="text-3xl font-bold">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</h1>
+        </div>
+
+
+
+
+
+    </header> -->
+    <nav class="bg-blue-600 text-white fixed top-0 left-0 w-full z-10 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center py-3">
+            <!-- Logo -->
+            <img src="download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
+            <div class="text-xl font-bold">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+            <!-- Navigation Links -->
+            <ul id="nav-links" class="hidden md:flex space-x-6">
+                <li><a href="#hero" class="hover:bg-blue-800 px-3 py-2 rounded">হোম</a></li>
+                <li><a href="#event-details" class="hover:bg-green-800 px-3 py-2 rounded">ইভেন্ট ডিটেইলস</a></li>
+                <li><a href="#guest-section" class="hover:bg-purple-800 px-3 py-2 rounded">বিশেষ অতিথি</a></li>
+                <li><a href="#gallery" class="hover:bg-red-800 px-3 py-2 rounded">গ্যালারি</a></li>
+                <li><a href="#contact" class="hover:bg-yellow-800 px-3 py-2 rounded">যোগাযোগ</a></li>
+                <li><a href="Bank.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">পেমেন্ট নাম্বার</a></li>
+                <li><a href="Resistration.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">রেজিষ্ট্রেশন
+                        করুন</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Navigation Links -->
+        <ul id="mobile-nav" class="bg-blue-700 hidden flex-col md:hidden space-y-2 px-4 py-2">
+            <li><a href="#hero" class="block hover:bg-blue-800 px-3 py-2 rounded" onclick="closeMobileMenu()">হোম</a>
+            </li>
+            <li><a href="#event-details" class="block hover:bg-green-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">ইভেন্ট ডিটেইলস</a></li>
+            <li><a href="#guest-section" class="block hover:bg-purple-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">বিশেষ অতিথি</a></li>
+            <li><a href="#gallery" class="block hover:bg-red-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">গ্যালারি</a></li>
+            <li><a href="#contact" class="block hover:bg-yellow-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">যোগাযোগ</a></li>
+            <li><a href="Bank.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">পেমেন্ট নাম্বার</a></li>
+            <li><a href="Resistration.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">রেজিষ্ট্রেশন
+                    করুন</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            if (!mobileNav.classList.contains('hidden')) {
+                mobileNav.classList.add('hidden');
+            }
+        }
+    </script>
+
+
+
+    <!-- Hero Section -->
+
+    <section id="hero" class="hero-bg text-white text-center py-32">
+        <div class="bg-black bg-opacity-50 p-8 animate-on-scroll">
+            <h2 class="text-5xl font-bold mb-4">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</h2>
+            <p class="text-lg mb-6">২০ জানুয়ারি ২০২৫ | সন্তোষপুর উচ্চ বিদ্যালয় মাঠ</p>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400">
+                <a href="Resistration.html" target="_blank" class="text-white">রেজিষ্ট্রেশন করুন</a>
+            </button>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event-details" class="p-8">
+        <h2 class="text-3xl font-bold text-center mb-6">ইভেন্ট ডিটেইলস</h2>
+        <p class="text-gray-600 text-center mb-4">এই পুনর্মিলনীতে থাকছে স্মৃতিচারণ, মধ্যাহ্নভোজ ও সাংস্কৃতিক অনুষ্ঠান।
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>সময়</th>
+                    <th>কার্যক্রম</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>১০:০০ AM</td>
+                    <td>প্রাথমিক শুভ সূচনা</td>
+                </tr>
+                <tr>
+                    <td>১১:০০ AM</td>
+                    <td>স্মৃতিচারণ পর্ব</td>
+                </tr>
+                <tr>
+                    <td>১:০০ PM</td>
+                    <td>মধ্যাহ্নভোজ</td>
+                </tr>
+                <tr>
+                    <td>৩:০০ PM</td>
+                    <td>সাংস্কৃতিক অনুষ্ঠান</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Guest Section -->
+    <section id="guest-section" class="p-8 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">বিশেষ অতিথি</h2>
+        <p class="text-gray-600 text-center mb-4">আমাদের পুনর্মিলনীতে সম্মানিত অতিথিদের সম্পর্কে জানুন।</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>অতিথির নাম</th>
+                    <th>পদবী</th>
+                    <th>বিবরণ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="p-8 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">গ্যালারি</h2>
+        <p class="text-center text-gray-600 mb-4">পূর্বের ইভেন্টের কিছু সুন্দর মুহূর্ত দেখুন।</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img src="https://via.placeholder.com/400" alt="Event Photo 1" class="rounded-lg shadow-lg">
+            <img src="https://via.placeholder.com/400" alt="Event Photo 2" class="rounded-lg shadow-lg">
+            <img src="https://via.placeholder.com/400" alt="Event Photo 3" class="rounded-lg shadow-lg">
+        </div>
+    </section>
+
+
+
+    <!-- Countdown Section -->
+    <section id="countdown-section" class="hero-bg p-8 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">পুনর্মিলনী কাউন্টডাউন</h2>
+        <p class="text-center text-lg mb-4">আমাদের ইভেন্ট শুরু হতে আর কত দিন বাকি তা দেখুন!</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center">
+            <div class="text-center bg-white p-4 rounded-lg shadow-lg">
+                <p id="days" class="text-4xl font-bold text-blue-600">00</p>
+                <p class="text-gray-600">Days</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-lg">
+                <p id="hours" class="text-4xl font-bold text-blue-600">00</p>
+                <p class="text-gray-600">Hours</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-lg">
+                <p id="minutes" class="text-4xl font-bold text-blue-600">00</p>
+                <p class="text-gray-600">Minutes</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-lg">
+                <p id="seconds" class="text-4xl font-bold text-blue-600">00</p>
+                <p class="text-gray-600">Seconds</p>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-6">
+            <a href="Resistration.html" target="_blank"
+                class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400">
+                রেজিষ্ট্রেশন করুন
+            </a>
+        </div>
+    </section>
+    <!-- Question and Ans -->
+
+    <section class="p-8 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">প্রশ্ন ও উত্তর</h2>
+        <p class="text-gray-600 text-center mb-4">পুনর্মিলনীতে উপস্থিত হতে হলে দয়া করে আগাম রেজিস্ট্রেশন করুন।</p>
+
+        <div class="space-y-4 max-w-3xl mx-auto">
+            <!-- FAQ 1 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(1)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    পুনর্মিলনীতে সবাই অংশ নিতে পারবে কি?
+                    <span id="icon-1" class="text-2xl">+</span>
+                </button>
+                <div id="answer-1" class="hidden mt-2 text-gray-600">
+                    হ্যাঁ, পুনর্মিলনীতে সকল প্রাক্তন শিক্ষার্থী অংশ নিতে পারবেন।
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(2)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    রেজিস্ট্রেশনের শেষ তারিখ কবে?
+                    <span id="icon-2" class="text-2xl">+</span>
+                </button>
+                <div id="answer-2" class="hidden mt-2 text-gray-600">
+                    রেজিস্ট্রেশনের শেষ তারিখ আগামী ১৫ জানুয়ারি ২০২৫।
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(3)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    পুনর্মিলনীর স্থানের ঠিকানা কী?
+                    <span id="icon-3" class="text-2xl">+</span>
+                </button>
+                <div id="answer-3" class="hidden mt-2 text-gray-600">
+                    পুনর্মিলনী অনুষ্ঠিত হবে সন্তোষপুর উচ্চ বিদ্যালয়ের মাঠে।
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(4)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    রেজিষ্ট্রেশন করার জন্য পেমেন্ট কিভাবে করব?
+                    <span id="icon-3" class="text-2xl">+</span>
+                </button>
+                <div id="answer-4" class="hidden mt-2 text-gray-600">
+                    বিকাশ, নগদ, রকেট এর মাধ্যমে আপনার ব্যাচ প্রতিনিধির কাছে পাঠাতে হবে।
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(5)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    পুনর্মিলনীতে কি পরিবার নিয়ে আংশন গ্রহন করা যাবে?
+                    <span id="icon-5" class="text-2xl">+</span>
+                </button>
+                <div id="answer-5" class="hidden mt-2 text-gray-600">
+                    হ্যা, অবশ্যই যাবে। এ ক্ষেত্রে অতিথি দের জন্য রেজিষ্ট্রেশন ফি বাবদ পেমেন্ট পরিশোধ করে রেজিষ্ট্রেশন
+                    করুন। এবং রেজিষ্ট্রেশন ফর্মে অতিথি র সংখ্যা উল্লেখ্য করুন।
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(6)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    রেজিস্ট্রেশন ফি কত?
+                    <span id="icon-5" class="text-2xl">+</span>
+                </button>
+                <div id="answer-6" class="hidden mt-2 text-gray-600">
+                    রেজিস্ট্রেশন ফি [টাকা] টাকা।
+                </div>
+            </div>
+            <!-- FAQ 7 -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(7)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    কী কী তথ্য রেজিস্ট্রেশনের জন্য প্রয়োজন?
+                    <span id="icon-5" class="text-2xl">+</span>
+                </button>
+                <div id="answer-7" class="hidden mt-2 text-gray-600">
+                    নাম<br>
+                    ব্যাচ নম্বর<br>
+                    মোবাইল নম্বর<br>
+                    ইমেইল<br>
+                    রেজিস্ট্রেশন ফি জমা দেওয়ার রসিদ<br>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(8)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    রেজিস্ট্রেশন কনফার্ম হলে কীভাবে জানবো?
+                    <span id="icon-5" class="text-2xl">+</span>
+                </button>
+                <div id="answer-8" class="hidden mt-2 text-gray-600">
+                    রেজিস্ট্রেশন কনফার্ম হলে আপনার মোবাইল নম্বরে মেসেজ যাবে অথবা ইমেইলে নিশ্চিতকরণ বার্তা পাঠানো হবে।
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(9)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    রেজিস্ট্রেশনের পরে যদি অংশগ্রহণ করতে না পারি, তাহলে কি রিফান্ড পাবো?
+                    <span id="icon-5" class="text-2xl">+</span>
+                </button>
+                <div id="answer-9" class="hidden mt-2 text-gray-600">
+                    রিফান্ড পলিসি নির্ভর করবে আয়োজকদের সিদ্ধান্তের উপর।
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <button onclick="toggleAnswer(10)"
+                    class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">
+                    পুনর্মিলনী পাস কখন এবং কোথা থেকে সংগ্রহ করব?
+                    <span id="icon-5" class="text-2xl">+</span>
+                </button>
+                <div id="answer-10" class="hidden mt-2 text-gray-600">
+                    পুনর্মিলনী পাস ইভেন্টের আগের দিন অথবা ইভেন্টের দিন নির্ধারিত কাউন্টার থেকে সংগ্রহ করতে হবে।
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="p-8">
+        <h2 class="text-3xl font-bold text-center mb-6">যোগাযোগ করুন</h2>
+        <p class="text-gray-600 text-center mb-4">কোনো প্রশ্ন থাকলে আমাদের সাথে যোগাযোগ করুন।</p>
+        <div class="max-w-md mx-auto">
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+                <p class="mb-2 text-gray-700 text-lg font-semibold">নাম: জনাব মোহাম্মদ হোসেন</p>
+                <p class="mb-2 text-gray-700 text-lg font-semibold">ফোন নম্বর: +৮৮০১৭১২৩৪৫৬৭৮</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Info -->
+    <section class="p-8 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">অতিরিক্ত তথ্য</h2>
+        <p class="text-gray-600 text-center mb-4">পুনর্মিলনীতে উপস্থিত হতে হলে দয়া করে আগাম রেজিস্ট্রেশন করুন।</p>
+        <p class="text-gray-600 text-center">আপনার বন্ধুদের আমন্ত্রণ জানাতে ভুলবেন না!</p>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; ২০২৫ সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p class="mt-2">
+            <a href="https://www.facebook.com/" target="_blank"
+                class="font-bold text-blue-500 hover:underline">ফেসবুক</a> |
+            <a href="https://www.twitter.com/" target="_blank"
+                class="font-bold text-blue-400 hover:underline">টুইটার</a> |
+            <a href="https://www.instagram.com/" target="_blank"
+                class="font-bold text-pink-500 hover:underline">ইনস্টাগ্রাম</a>
+        </p>
+        <p class="text-sm mt-4">Developed by <a href="https://www.linkedin.com/in/md-rifat-hossen-pust/" target="_blank"
+                class="font-bold text-yellow-300 hover:underline">Md. Rifat Hossen</a></p>
+    </footer>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্কুল রিইউনিয়ন ফর্ম</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white fixed top-0 left-0 w-full z-10 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center py-3">
+            <!-- Logo -->
+            <img src="download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
+            <div class="text-xl font-bold">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+            <!-- Navigation Links -->
+            <ul id="nav-links" class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="hover:bg-blue-800 px-3 py-2 rounded">হোম</a></li>
+                <li><a href="index.html" class="hover:bg-green-800 px-3 py-2 rounded">ইভেন্ট ডিটেইলস</a></li>
+                <li><a href="index.html" class="hover:bg-purple-800 px-3 py-2 rounded">বিশেষ অতিথি</a></li>
+                <li><a href="index.html" class="hover:bg-red-800 px-3 py-2 rounded">গ্যালারি</a></li>
+                <li><a href="index.html" class="hover:bg-yellow-800 px-3 py-2 rounded">যোগাযোগ</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Navigation Links -->
+        <ul id="mobile-nav" class="bg-blue-700 hidden flex-col md:hidden space-y-2 px-4 py-2">
+            <li><a href="index.html" class="block hover:bg-blue-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">হোম</a>
+            </li>
+            <li><a href="index.html" class="block hover:bg-green-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">ইভেন্ট ডিটেইলস</a></li>
+            <li><a href="index.html" class="block hover:bg-purple-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">বিশেষ অতিথি</a></li>
+            <li><a href="index.html" class="block hover:bg-red-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">গ্যালারি</a></li>
+            <li><a href="index.html" class="block hover:bg-yellow-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">যোগাযোগ</a></li>
+            <li><a href="Bank.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">পেমেন্ট নাম্বার</a></li>
+        </ul>
+    </nav>
+
+    <div class="max-w-lg mx-auto bg-white p-6 mt-20 shadow-lg rounded-md">
+        <h2 class="text-2xl font-bold text-center text-blue-600">স্কুল রিইউনিয়ন রেজিস্ট্রেশন ফর্ম</h2>
+        <form id="reunionForm" class="mt-6 space-y-4">
+            <div>
+                <label class="block">আপনার নাম:</label>
+                <input type="text" id="name" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">ইমেইল:</label>
+                <input type="email" id="email" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">মোবাইল নাম্বার:</label>
+                <input type="tel" id="mobile" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">সেকশন (SSC পাসিং ইয়ার):</label>
+                <input type="text" id="section" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">পেমেন্ট টাইপ:</label>
+                <div class="flex gap-4">
+                    <button type="button" class="payment-btn px-4 py-2 bg-purple-500 text-white rounded"
+                        data-type="বিকাশ">বিকাশ</button>
+                    <button type="button" class="payment-btn px-4 py-2 bg-red-500 text-white rounded"
+                        data-type="রকেট">রকেট</button>
+                    <button type="button" class="payment-btn px-4 py-2 bg-green-500 text-white rounded"
+                        data-type="নগদ">নগদ</button>
+                    <button type="button" class="payment-btn px-4 py-2 bg-blue-500 text-white rounded"
+                        data-type="ব্যাংক">ব্যাংক</button>
+                </div>
+                <input type="hidden" id="paymentType">
+            </div>
+
+            <div>
+                <label class="block">যেই নাম্বারে পেমেন্ট করেছেন:</label>
+                <input type="tel" id="paymentNumber" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">যে নাম্বার থেকে টাকা পাঠিয়েছেন:</label>
+                <input type="tel" id="senderNumber" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">ট্রানজেকশন নাম্বার:</label>
+                <input type="text" id="transactionId" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">ব্যাচ প্রতিনিধি নাম:</label>
+                <input type="text" id="batchRepresentative" class="w-full p-2 border rounded" required>
+            </div>
+
+            <div>
+                <label class="block">অতিথির সংখ্যা:</label>
+                <input type="number" id="guestCount" class="w-full p-2 border rounded">
+            </div>
+
+            <div class="flex justify-between">
+                <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">সাবমিট করুন</button>
+                <button type="button" id="resetBtn" class="bg-gray-400 text-white py-2 px-4 rounded">রিসেট করুন</button>
+            </div>
+        </form>
+    </div>
+
+    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+        <p>&copy; ২০২৫ সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p class="mt-2">
+            <a href="https://www.facebook.com/" target="_blank"
+                class="font-bold text-blue-500 hover:underline">ফেসবুক</a> |
+            <a href="https://www.twitter.com/" target="_blank"
+                class="font-bold text-blue-400 hover:underline">টুইটার</a> |
+            <a href="https://www.instagram.com/" target="_blank"
+                class="font-bold text-pink-500 hover:underline">ইনস্টাগ্রাম</a>
+        </p>
+        <p class="text-sm mt-4">Developed by <a href="https://www.linkedin.com/in/md-rifat-hossen-pust/" target="_blank"
+                class="font-bold text-yellow-300 hover:underline">Md. Rifat Hossen</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

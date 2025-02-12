@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        function updateCountdown() {
+            const eventDate = new Date("2025-04-20T00:00:00").getTime(); // ইভেন্টের সঠিক তারিখ বসান
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            if (difference <= 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        // প্রতি সেকেন্ডে কাউন্টডাউন আপডেট হবে
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            answer.classList.toggle('hidden');
+            icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
+        }
+
+    </script>
+    <style>
+        .hero-bg {
+            background: url('preview.jpg') center/cover no-repeat;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <!-- <header class="bg-green-600 text-white py-4 fixed top-0 w-full z-50 shadow-md">
+        <div class="flex items-center space-x-4">
+            <img src="download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
+            <h1 class="text-3xl font-bold">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</h1>
+        </div>
+
+
+
+
+
+    </header> -->
+    <nav class="bg-blue-600 text-white fixed top-0 left-0 w-full z-10 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center py-3">
+            <!-- Logo -->
+            <img src="download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
+            <div class="text-xl font-bold">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+            <!-- Navigation Links -->
+            <ul id="nav-links" class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="hover:bg-blue-800 px-3 py-2 rounded">হোম</a></li>
+                <li><a href="index.html" class="hover:bg-green-800 px-3 py-2 rounded">ইভেন্ট ডিটেইলস</a></li>
+                <li><a href="index.html" class="hover:bg-purple-800 px-3 py-2 rounded">বিশেষ অতিথি</a></li>
+                <li><a href="index.html" class="hover:bg-red-800 px-3 py-2 rounded">গ্যালারি</a></li>
+                <li><a href="index.html" class="hover:bg-yellow-800 px-3 py-2 rounded">যোগাযোগ</a></li>
+                <li><a href="Resistration.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">রেজিষ্ট্রেশন
+                        করুন</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Navigation Links -->
+        <ul id="mobile-nav" class="bg-blue-700 hidden flex-col md:hidden space-y-2 px-4 py-2">
+            <li><a href="index.html" class="block hover:bg-blue-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">হোম</a>
+            </li>
+            <li><a href="index.html" class="block hover:bg-green-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">ইভেন্ট ডিটেইলস</a></li>
+            <li><a href="index.html" class="block hover:bg-purple-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">বিশেষ অতিথি</a></li>
+            <li><a href="index.html" class="block hover:bg-red-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">গ্যালারি</a></li>
+            <li><a href="index.html" class="block hover:bg-yellow-800 px-3 py-2 rounded"
+                    onclick="closeMobileMenu()">যোগাযোগ</a></li>
+            <!-- <li><a href="Bank.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">পেমেন্ট নাম্বার</a></li> -->
+            <li><a href="Resistration.html" class="block hover:bg-yellow-800 px-3 py-2 rounded">রেজিষ্ট্রেশন
+                    করুন</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            if (!mobileNav.classList.contains('hidden')) {
+                mobileNav.classList.add('hidden');
+            }
+        }
+    </script>
+
+
+
+    <section id="hero" class="hero-bg text-white text-center py-32">
+        <div class="bg-black bg-opacity-50 p-8 animate-on-scroll">
+            <h2 class="text-5xl font-bold mb-4">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</h2>
+            <p class="text-lg mb-6">২০ জানুয়ারি ২০২৫ | সন্তোষপুর উচ্চ বিদ্যালয় মাঠ</p>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400">
+                <a href="Resistration.html" target="_blank" class="text-white">রেজিষ্ট্রেশন করুন</a>
+            </button>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event-details" class="p-8">
+        <h3 class="text-2xl font-bold text-center mt-10">ব্যাচ প্রতিনিধিদের যোগাযোগ নম্বর</h3>
+        <p class="text-gray-600 text-center mb-4">বিকাশ, নগদ, রকেট এর মাধ্যমে পেমেন্ট করতে নিচের প্রতিনিধিদের সাথে
+            যোগাযোগ করুন।</p>
+
+        <table class="table-auto border-collapse w-full text-left bg-white">
+            <thead class="bg-blue-500 text-white">
+                <tr>
+                    <th class="border p-2">ব্যাচ নম্বর</th>
+                    <th class="border p-2">প্রতিনিধির নাম</th>
+                    <th class="border p-2">মোবাইল নম্বর (বিকাশ/নগদ/রকেট)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border p-2">২০০৫</td>
+                    <td class="border p-2">মোহাম্মদ হাসান</td>
+                    <td class="border p-2">017XXXXXXXX (বিকাশ)</td>
+                </tr>
+                <tr>
+                    <td class="border p-2">২০১০</td>
+                    <td class="border p-2">সায়েদ রহমান</td>
+                    <td class="border p-2">018XXXXXXXX (নগদ)</td>
+                </tr>
+                <tr>
+                    <td class="border p-2">২০১৫</td>
+                    <td class="border p-2">ফারহান আলম</td>
+                    <td class="border p-2">019XXXXXXXX (রকেট)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; ২০২৫ সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p class="mt-2">
+            <a href="https://www.facebook.com/" target="_blank"
+                class="font-bold text-blue-500 hover:underline">ফেসবুক</a> |
+            <a href="https://www.twitter.com/" target="_blank"
+                class="font-bold text-blue-400 hover:underline">টুইটার</a> |
+            <a href="https://www.instagram.com/" target="_blank"
+                class="font-bold text-pink-500 hover:underline">ইনস্টাগ্রাম</a>
+        </p>
+        <p class="text-sm mt-4">Developed by <a href="https://www.linkedin.com/in/md-rifat-hossen-pust/" target="_blank"
+                class="font-bold text-yellow-300 hover:underline">Md. Rifat Hossen</a></p>
+    </footer>
+
+
+
+
+</body>
+
+</html>

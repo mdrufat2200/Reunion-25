@@ -1,0 +1,83 @@
+document.querySelectorAll(".payment-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        document.getElementById("paymentType").value = this.getAttribute("data-type");
+        alert("✅ আপনি পেমেন্ট মেথড নির্বাচন করেছেন: " + this.getAttribute("data-type"));
+
+        // সব পেমেন্ট বাটন নিষ্ক্রিয় করুন
+        document.querySelectorAll(".payment-btn").forEach(btn => {
+            btn.classList.add("opacity-50");
+            btn.disabled = true;
+        });
+
+        // শুধু ক্লিক করা বাটন সক্রিয় করুন
+        this.classList.remove("opacity-50");
+        this.disabled = false;
+    });
+});
+
+document.getElementById("reunionForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let formData = new FormData();
+    formData.append("name", document.getElementById("name").value);
+    formData.append("email", document.getElementById("email").value);
+    formData.append("mobile", document.getElementById("mobile").value);
+    formData.append("section", document.getElementById("section").value);
+    formData.append("paymentType", document.getElementById("paymentType").value);
+    formData.append("paymentNumber", document.getElementById("paymentNumber").value);
+    formData.append("senderNumber", document.getElementById("senderNumber").value);
+    formData.append("transactionId", document.getElementById("transactionId").value);
+    formData.append("batchRepresentative", document.getElementById("batchRepresentative").value);
+    formData.append("guestCount", document.getElementById("guestCount").value);
+
+    console.log("Submitted Data:", Object.fromEntries(formData));
+
+    fetch("https://script.google.com/macros/s/AKfycbyadzNHgA_my1PJhZDgqiDI74mIb6zVYLzUkffYCDX_hhTN7x3uwtLdps7iBCPuh7h_tA/exec", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            mobile: document.getElementById("mobile").value,
+            section: document.getElementById("section").value,
+            paymentType: document.getElementById("paymentType").value,
+            paymentNumber: document.getElementById("paymentNumber").value,
+            senderNumber: document.getElementById("senderNumber").value,
+            transactionId: document.getElementById("transactionId").value,
+            batchRepresentative: document.getElementById("batchRepresentative").value,
+            guestCount: document.getElementById("guestCount").value
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("✅ ফর্ম সফলভাবে জমা হয়েছে!");
+        document.getElementById("reunionForm").reset();
+
+        // সব পেমেন্ট বাটন পুনরায় সক্রিয় করুন
+        document.querySelectorAll(".payment-btn").forEach(btn => {
+            btn.classList.remove("opacity-50");
+            btn.disabled = false;
+        });
+    })
+    .catch(error => alert("❌ সমস্যা হয়েছে: " + error));
+});
+
+// ✅ রিসেট বাটন যুক্ত করা হলো
+document.getElementById("resetBtn").addEventListener("click", function() {
+    document.getElementById("reunionForm").reset();
+
+    // সব পেমেন্ট বাটন পুনরায় সক্রিয় করুন
+    document.querySelectorAll(".payment-btn").forEach(btn => {
+        btn.classList.remove("opacity-50");
+        btn.disabled = false;
+    });
+});
+function toggleMobileMenu() {
+    document.getElementById('mobile-nav').classList.toggle('hidden');
+}
+
+function closeMobileMenu() {
+    document.getElementById('mobile-nav').classList.add('hidden');
+}

@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgrey;
+}
+.content {
+  min-height:90vh;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 9pt;
+}
+
+main {
+  height: 100vh;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+.pust_logo {
+  width: 3.6em;
+  margin: 1em;
+  margin-right: 1em;
+  margin-top: 0.2em;
+  margin-left: 1em;
+}
+header {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  background-color: green;
+  color: white;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+header h2 {
+  color: skyblue;
+  /*color:yellowgreen*/
+}
+/* navbar starts */
+nav {
+  overflow: visible;
+}
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  background-color: #d9bfff;
+  flex-wrap: wrap;
+  overflow: visible;
+}
+nav ul li {
+  text-align: center;
+  position: relative;
+}
+li a {
+  padding: 1rem 4rem;
+  width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+
+.not-hidden {
+  display: none;
+}
+
+/* .dropdown-content{
+  display: none;
+} */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+
+/* navbar ends*/
