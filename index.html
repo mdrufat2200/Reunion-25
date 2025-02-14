@@ -6,50 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-        function updateCountdown() {
-            const eventDate = new Date("2025-04-20T00:00:00").getTime(); // ইভেন্টের সঠিক তারিখ বসান
-            const now = new Date().getTime();
-            const difference = eventDate - now;
 
-            if (difference <= 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
-                return;
-            }
-
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-        }
-
-        // প্রতি সেকেন্ডে কাউন্টডাউন আপডেট হবে
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        function toggleAnswer(id) {
-            const answer = document.getElementById(`answer-${id}`);
-            const icon = document.getElementById(`icon-${id}`);
-            answer.classList.toggle('hidden');
-            icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
-        }
-
-    </script>
     <style>
         .hero-bg {
-            background: url('https://i.postimg.cc/GtTj7F75/preview.jpg') center/cover no-repeat;
+            background: url('preview.jpg') center/cover no-repeat;
         }
 
         table {
@@ -89,18 +49,25 @@
             }
         }
 
-        .hero-title {
-            animation: fadeInUp 1.5s ease-out forwards;
+        .animate-fadeInUp {
+            animation: fadeInUp 1.5s ease-out;
         }
 
-        .hero-date {
-            animation: fadeInUp 1.8s ease-out forwards;
-            animation-delay: 0.3s;
+        /* botton bumping */
+        @keyframes bump {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
 
-        .hero-button {
-            animation: fadeInUp 2s ease-out forwards;
-            animation-delay: 0.6s;
+        .animate-bump {
+            animation: bump 0.5s ease-in-out infinite;
         }
     </style>
 </head>
@@ -121,7 +88,7 @@
     <nav class="bg-blue-600 text-white fixed top-0 left-0 w-full z-10 shadow-lg">
         <div class="container mx-auto px-4 flex justify-between items-center py-3">
             <!-- Logo -->
-            <img src="https://i.postimg.cc/KjjWZ39P/download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
+            <img src="download-fotor-20241020103045.png" alt="Logo" class="w-12 h-12 rounded-full">
             <div class="text-xl font-bold">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</div>
             <!-- Mobile Menu Button -->
             <button class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
@@ -158,29 +125,34 @@
         </ul>
     </nav>
 
-    <script>
-        function toggleMobileMenu() {
-            const mobileNav = document.getElementById('mobile-nav');
-            mobileNav.classList.toggle('hidden');
-        }
-
-        function closeMobileMenu() {
-            const mobileNav = document.getElementById('mobile-nav');
-            if (!mobileNav.classList.contains('hidden')) {
-                mobileNav.classList.add('hidden');
-            }
-        }
-    </script>
-
+    <!-- Scrolling Alert Section -->
+    <section class="bg-red-600 text-white py-3 overflow-hidden">
+        <div class="scrolling-text text-lg font-bold flex items-center">
+            <span class="text-yellow-300 text-2xl">⚠️</span> <!-- Alert Icon -->
+            পুনর্মিলনীতে যোগ দিতে আজই রেজিস্ট্রেশন করুন!
+            <a href="Resistration.html" class="underline text-yellow-300">রেজিস্ট্রেশন লিংক</a>
+            <span class="text-yellow-300 text-2xl">⚠️</span>
+        </div>
+    </section>
 
 
     <!-- Hero Section -->
 
-    <section id="hero" class="hero-bg text-white text-center py-32">
+    <!-- <section id="hero" class="hero-bg text-white text-center py-32">
         <div class="bg-black bg-opacity-50 p-8 animate-on-scroll">
             <h2 class="text-5xl font-bold mb-4">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</h2>
             <p class="text-lg mb-6">২০ জানুয়ারি ২০২৫ | সন্তোষপুর উচ্চ বিদ্যালয় মাঠ</p>
             <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400">
+                <a href="Resistration.html" target="_blank" class="text-white">রেজিষ্ট্রেশন করুন</a>
+            </button>
+        </div>
+    </section> -->
+
+    <section id="hero" class="hero-bg text-white text-center py-32">
+        <div class="bg-black bg-opacity-50 p-8 animate-on-scroll animate-fadeInUp">
+            <h2 class="text-5xl font-bold mb-4">সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী ২০২৫</h2>
+            <p class="text-lg mb-6">২০ জানুয়ারি ২০২৫ | সন্তোষপুর উচ্চ বিদ্যালয় মাঠ</p>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400 animate-bump">
                 <a href="Resistration.html" target="_blank" class="text-white">রেজিষ্ট্রেশন করুন</a>
             </button>
         </div>
@@ -288,8 +260,9 @@
         </div>
 
         <div class="flex justify-center mt-6">
+
             <a href="Resistration.html" target="_blank"
-                class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400">
+                class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400 animate-fadeInUp animate-bump">
                 রেজিষ্ট্রেশন করুন
             </a>
         </div>
@@ -440,6 +413,27 @@
         <p class="text-gray-600 text-center mb-4">পুনর্মিলনীতে উপস্থিত হতে হলে দয়া করে আগাম রেজিস্ট্রেশন করুন।</p>
         <p class="text-gray-600 text-center">আপনার বন্ধুদের আমন্ত্রণ জানাতে ভুলবেন না!</p>
     </section>
+
+    <!-- Location -->
+    <!-- Google Maps Embed -->
+    <section class="p-8 ">
+
+
+        <h2 class="text-3xl font-bold text-center mb-6">Our Location</h2>
+        <div class="flex justify-center">
+            <!-- <iframe width="600" height="400" style="border:0" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58338.21223939266!2d90.3563!3d23.685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bfe8f07c5e7d%3A0x3d4b60e3e5d5f1e6!2sBangladesh!5e0!3m2!1sen!2sbd!4v1707832767713">
+            </iframe> -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.627370891536!2d90.1576867!3d24.602052999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37563deb2210d12b%3A0x40d3b58a28c63cc8!2sSontoshpor%20High%20School!5e0!3m2!1sen!2sbd!4v1739463120174!5m2!1sen!2sbd"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-4">
         <p>&copy; ২০২৫ সন্তোষপুর উচ্চ বিদ্যালয় পুনর্মিলনী। সর্বস্বত্ব সংরক্ষিত।</p>
@@ -456,7 +450,114 @@
     </footer>
 
 
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+        }
 
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            if (!mobileNav.classList.contains('hidden')) {
+                mobileNav.classList.add('hidden');
+            }
+        }
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        // function updateCountdown() {
+        //     const eventDate = new Date("2025-04-20T00:00:00").getTime(); // ইভেন্টের সঠিক তারিখ বসান
+        //     const now = new Date().getTime();
+        //     const difference = eventDate - now;
+
+        //     if (difference <= 0) {
+        //         document.getElementById("days").innerText = "00";
+        //         document.getElementById("hours").innerText = "00";
+        //         document.getElementById("minutes").innerText = "00";
+        //         document.getElementById("seconds").innerText = "00";
+        //         return;
+        //     }
+
+        //     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        //     const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        //     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        //     document.getElementById("days").innerText = String(days).padStart(2, '0');
+        //     document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        //     document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        //     document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        // }
+
+        // // প্রতি সেকেন্ডে কাউন্টডাউন আপডেট হবে
+        // setInterval(updateCountdown, 1000);
+        // updateCountdown();
+        function updateCountdown() {
+            const eventDate = new Date("2025-04-20T00:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            if (difference <= 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+            // Random color generator
+            function getRandomColor() {
+                return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+            }
+
+            // Change text color dynamically
+            document.getElementById("days").style.color = getRandomColor();
+            document.getElementById("hours").style.color = getRandomColor();
+            document.getElementById("minutes").style.color = getRandomColor();
+            document.getElementById("seconds").style.color = getRandomColor();
+        }
+
+        // প্রতি সেকেন্ডে কাউন্টডাউন আপডেট হবে
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            answer.classList.toggle('hidden');
+            icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const heroSection = document.querySelector("#hero .animate-on-scroll");
+
+            // Intersection Observer তৈরি করুন
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // এলিমেন্ট ভিউতে এলে ক্লাস রিসেট করে পুনরায় এনিমেশন চালু করা হবে
+                        heroSection.classList.remove("animate-fadeInUp");
+                        void heroSection.offsetWidth; // Reflow Trigger
+                        heroSection.classList.add("animate-fadeInUp");
+                    }
+                });
+            }, { threshold: 0.5 }); // 50% এলিমেন্ট স্ক্রিনে আসলে এনিমেশন হবে
+
+            observer.observe(heroSection);
+        });
+
+    </script>
 
 </body>
 
