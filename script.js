@@ -44,7 +44,7 @@ document.getElementById("reunionForm").addEventListener("submit", function(e) {
     console.log("Submitted Data:", formData);
 
     // ✅ Google Sheets API-তে ডেটা পাঠানো
-    fetch("https://script.google.com/macros/s/AKfycbyadzNHgA_my1PJhZDgqiDI74mIb6zVYLzUkffYCDX_hhTN7x3uwtLdps7iBCPuh7h_tA/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyc3HM1LkV1DNQsKzurFgz_ZRFJH6U3u5MNGhaVv8FQSZPg9AYP04z0_xv-MnBxJqGVhQ/exec", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
